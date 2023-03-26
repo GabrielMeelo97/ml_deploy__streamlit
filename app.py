@@ -24,11 +24,11 @@ st.title("Regressão Logística")
 # Cabeçalho lateral
 st.sidebar.header('Dataset e Hiperparâmetros')
 st.sidebar.markdown("""**Selecione o Dataset Desejado**""")
-Dataset = st.sidebar.selectbox('Dataset',('Iris', 'Diabetes', 'Breast Cancer'))
+Dataset = st.sidebar.selectbox('Dataset',('Iris', 'Wine', 'Breast Cancer'))
 Split = st.sidebar.slider('Escolha o Percentual de Divisão dos Dados em Treino e Teste (padrão = 70/30):', 0.1, 0.9, 0.70)
 st.sidebar.markdown("""**Selecione os Hiperparâmetros Para o Modelo de Regressão Logística**""")
 Solver = st.sidebar.selectbox('Algoritmo', ('lbfgs', 'newton-cg', 'liblinear', 'sag'))
-Penality = st.sidebar.radio("Regularização:", ('none', 'l1', 'l2', 'elasticnet'))
+Penality = st.sidebar.radio("Regularização:", ('none','l2',))
 Tol = st.sidebar.text_input("Tolerância Para Critério de Parada (default = 1e-4):", "1e-4")
 Max_Iteration = st.sidebar.text_input("Número de Iterações (default = 50):", "50")
 
@@ -43,8 +43,8 @@ def carrega_dataset(dataset):
     # Carrega o dataset
     if dataset == 'Iris':
         dados = sklearn.datasets.load_iris()
-    elif dataset == 'Diabetes':
-         dados = sklearn.datasets.load_diabetes()
+    elif dataset == 'Wine':
+         dados = sklearn.datasets.load_wine()
     elif dataset == 'Breast Cancer':
          dados = sklearn.datasets.load_breast_cancer()
     
